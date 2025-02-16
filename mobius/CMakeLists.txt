@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.11) # FetchContent is available in 3.11+
-project(mobius)
+project(morpheus-client)
 
 # Generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -32,15 +32,20 @@ foreach(file ${files})
     configure_file(${file} ${file} COPYONLY)
 endforeach()
 
+# project(test)
+include_directories(include)
+# file(GLOB SOURCES "src/*.cpp")
+# add_executable(test ${SOURCES})
+
 add_executable(${PROJECT_NAME}
-    "./main.cpp"
+    "src/main.cpp"
+    "src/globals.cpp"
 )
 set(raylib_VERBOSE 1)
 target_link_libraries(${PROJECT_NAME} raylib)
-target_include_directories(${PROJECT_NAME} PRIVATE
-    "./include"
-    "./external/asio/asio/include"
-)
+# target_include_directories(${PROJECT_NAME} PRIVATE
+#     "./include"
+# )
 
 
 # Checks if OSX and links appropriate frameworks (Only required on MacOS)

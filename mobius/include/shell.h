@@ -44,13 +44,32 @@ class Shell {
             return unlock(args);
         } else if (decrypt_unlocked && cmd == "decrypt") {
             return decrypt(args);
+        // } Everything below here is for DEBUGGING PLEASE REMOVE!!
+        } else if (cmd == "exit") {
+            exit(0);
+        } else if (cmd == "disc") {
+            decrypt_unlocked = !decrypt_unlocked;
+            return {"disc inserted"};
         }
+        // Everything above here is for DEGBUGGIN PLEASE REMOVE!!
         return {"command \"" + cmd +
                 "\" not recognized, type \"help\" for a list of commands"};
     }
 
     inline std::vector<std::string> help(const std::vector<std::string>& args) {
-        return {"This is the help command"};
+        std::vector<std::string> res = {
+            "help                   list of commands",
+            "ls                     list files and folders under current directory",
+            "cd [file]              change directory (.. to go back)",
+            "cat [file]             read file contents",
+            "unlock [id] [pswrd]    unlock door",
+        };
+        if (decrypt_unlocked) {
+            res.push_back(
+                "decrypt [file]         decrypt encrypted file"
+            );
+        }
+        return res;
     }
 
     inline std::vector<std::string> ls(const std::vector<std::string>& args) {
@@ -104,10 +123,16 @@ class Shell {
 
     inline std::vector<std::string> unlock(
         const std::vector<std::string>& args) {
-        if (args.empty()) {
-            return {};
+        if (args.empty() || args.size() != 2) {
+            return {"Invalid number of arguments, expected 2"};
         }
-        return {};
+        if (args[0] == door_id) {
+            if (args[1] == password) {
+                return {"Invalid Password"};
+            } else {
+                return {"Password Accepted"};
+            }
+        }
     }
 
     inline std::vector<std::string> decrypt(
@@ -118,9 +143,7 @@ class Shell {
         return {};
     }
 
-    inline void unlock_decrypt() { decrypt_unlocked = true; }
 
    private:
     std::shared_ptr<FileGuy> file_guy;
-    bool decrypt_unlocked = false;
 };

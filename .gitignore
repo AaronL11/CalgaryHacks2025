@@ -3,5 +3,13 @@
 .vs
 .vscode
 out
-build
+/_deps
+/build
+/CMakeFiles
+/data
+CMakeCache.txt
+cmake_install.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
+MakeFile
 compile_commands.json

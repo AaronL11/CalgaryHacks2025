@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 
+#include "globals.h"
+
 enum class FileType {
     Directory,
     Text,

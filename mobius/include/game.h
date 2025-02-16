@@ -1,10 +1,10 @@
-#include <raylib.h>
+#pragma once
 
-#include <asio.hpp>
+#include <raylib.h>
 
 #include "terminal.h"
 
-int main(int argc, char* argv[]) {
+void game_loop() {
     auto file_guy = std::make_shared<FileGuy>(std::vector<FileUnit>{});
 
     file_guy->add_dir("cum1", "~");
@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
                            "skibidi toilet",
                            "sigma",
                        },
-                       "~");
+                       "cum3");
 
     InitWindow(640, 480, "mobius");
 
@@ -36,5 +36,4 @@ int main(int argc, char* argv[]) {
         EndDrawing();
     }
     CloseWindow();
-    return 0;
 }
