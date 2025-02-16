@@ -1,2 +1,17 @@
+.DS_Store
+.cache
+.vs
+.vscode
+out
+/_deps
+/build
+/CMakeFiles
+/data
+CMakeCache.txt
+cmake_install.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
+MakeFile
+compile_commands.json
 debug/
 target/
