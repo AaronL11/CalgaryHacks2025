@@ -1,2 +1,4 @@
-# CalgaryHacks2025
-This is the repository for our submission to the 2025 Calgary Hacks Hackathon at the University of Calgary.
+# Matrix Escape Debugging Server
+
+This branch contains all the code to run the server used
+to debug the game. Spoofs connection between the two clients.

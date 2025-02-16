@@ -13,3 +13,5 @@ CPackConfig.cmake
 CPackSourceConfig.cmake
 MakeFile
 compile_commands.json
+debug/
+target/
